@@ -1,13 +1,7 @@
-
-
-
-import prompt
-
-
-
 import shlex
-from .utils import load_metadata, save_metadata
+
 from .core import create_table, drop_table, list_tables
+from .utils import load_metadata, save_metadata
 
 META_FILE = "db_meta.json"
 
@@ -16,7 +10,7 @@ def print_help():
     """Prints the help message for the current mode."""
     print("\n***Процесс работы с таблицей***")
     print("Функции:")
-    print("<command> create_table <имя_таблицы> <столбец1:тип> .. - создать таблицу")
+    print("<command> create_table <имя_таблицы> <столбец1:тип> .. - создать таблицу") # noqa: E501
     print("<command> list_tables - показать список всех таблиц")
     print("<command> drop_table <имя_таблицы> - удалить таблицу")
     print("\nОбщие команды:")
@@ -48,14 +42,14 @@ def run():
                 list_tables(metadata)
 
             case ["create_table"]:
-                print("Некорректное значение: отсутствует имя таблицы. Попробуйте снова.")
+                print("Некорректное значение: отсутствует имя таблицы. Попробуйте снова.") # noqa: E501
 
             case ["create_table", table, *cols]:
                 metadata = create_table(metadata, table, cols)
                 save_metadata(META_FILE, metadata)
 
             case ["drop_table"]:
-                print("Некорректное значение: отсутствует имя таблицы. Попробуйте снова.")
+                print("Некорректное значение: отсутствует имя таблицы. Попробуйте снова.") # noqa: E501
 
             case ["drop_table", table]:
                 metadata = drop_table(metadata, table)
@@ -63,4 +57,3 @@ def run():
 
             case [cmd, *_]:
                 print(f"Функции {cmd} нет. Попробуйте снова.")
-

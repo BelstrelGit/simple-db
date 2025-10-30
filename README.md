@@ -36,4 +36,11 @@
 <command> list_tables - показать список всех таблиц
 <command> drop_table <имя_таблицы> - удалить таблицу
 <command> exit - выход из программы
-<command> help - справочная информация 
+<command> help - справочная информация
+
+
+
+## Демонстрация работы базы данных (asciinema)
+
+[![asciicast](https://asciinema.org/a/A4Dv6nWGh1ltv7iAuzARPHSyX.svg)](https://asciinema.org/a/A4Dv6nWGh1ltv7iAuzARPHSyX)
+

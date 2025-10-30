@@ -5,10 +5,11 @@
 
 from .engine import run
 
+
 def main():
     print("***База данных***")
     print("Функции:")
-    print("<command> create_table <имя_таблицы> <столбец1:тип> <столбец2:тип> .. - создать таблицу")
+    print("<command> create_table <имя_таблицы> <столбец1:тип> <столбец2:тип> .. - создать таблицу") # noqa: E501
     print("<command> list_tables - показать список всех таблиц")
     print("<command> drop_table <имя_таблицы> - удалить таблицу")
     print("<command> exit - выход из программы")
