@@ -27,6 +27,6 @@ ruff = "^0.6.9"
 
 
 [tool.poetry.scripts]
-project = "src.primitive_db.main:main"
+database = "src.primitive_db.main:main"
 
 
