@@ -2,13 +2,12 @@
 import json
 import os
 
-META_FILE = "db_meta.json"
-DATA_DIR_NAME = "data"
+from .constants import DATA_DIR, META_FILE
 
 
 def _data_dir():
     base_dir = os.path.dirname(os.path.abspath(META_FILE))
-    data_dir = os.path.join(base_dir, DATA_DIR_NAME)
+    data_dir = os.path.join(base_dir, DATA_DIR)
     if not os.path.isdir(data_dir):
         os.makedirs(data_dir, exist_ok=True)
     return data_dir
