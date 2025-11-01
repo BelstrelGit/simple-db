@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "project2-gorelikov-andrey-m25-555"
-version = "0.1.0"
+version = "0.1.1"
 description = "примитивная база данных"
 authors = ["a.gorelikov <belstrel@gmail.com>"]
 readme = "README.md"
@@ -12,6 +12,7 @@ packages = [
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
 prompt = "^0.4.1"
+prettytable = "^3.16.0"
 
 [tool.ruff]
 line-length = 88

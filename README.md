@@ -3,14 +3,15 @@
 Поддерживаемые типы данных: `int`, `str`, `bool`.  
 Если столбец `ID:int` не указан пользователем, он добавляется автоматически в начало.
 
-### Команды
+### Операции работы с таблицами
 - `create_table <имя_таблицы> <столбец1:тип> <столбец2:тип> ...` — создать таблицу  
 - `list_tables` — показать список всех таблиц  
 - `drop_table <имя_таблицы>` — удалить таблицу  
 - `help` — справочная информация  
 - `exit` — выйти
 
-### Пример сессии
+
+### Пример работы с таблицами
 
 >>> database
 
@@ -36,11 +37,77 @@
 <command> list_tables - показать список всех таблиц
 <command> drop_table <имя_таблицы> - удалить таблицу
 <command> exit - выход из программы
-<command> help - справочная информация
+<command> help- справочная информация
+
+
+
+
+
+### Операции с данными
+
+Функции:
+<command> insert into <имя_таблицы> values (<значение1>, <значение2>, ...) - создать запись.
+<command> select from <имя_таблицы> where <столбец> = <значение> - прочитать записи по условию.
+<command> select from <имя_таблицы> - прочитать все записи.
+<command> update <имя_таблицы> set <столбец1> = <новое_значение1> where <столбец_условия> = <значение_условия> - обновить запись.
+<command> delete from <имя_таблицы> where <столбец> = <значение> - удалить запись.
+<command> info <имя_таблицы> - вывести информацию о таблице.
+<command> exit - выход из программы
+<command> help- справочная информация
+
+
+### Пример работы с данными 
+
+>>> database
+>>> Введите команду: insert into users values ("Sergei", 28, true)
+Запись с ID=1 успешно добавлена в таблицу "users".
+
+>>> Введите команду: select from users where age = 28
++----+--------+-----+-----------+
+| ID |  name  | age | is_active |
++----+--------+-----+-----------+
+| 1  | Sergei | 28  |    True   |
++----+--------+-----+-----------+
+
+>>> Введите команду: update users set age = 29 where name = "Sergei"
+Запись с ID=1 в таблице "users" успешно обновлена.
+
+>>> Введите команду: delete from users where ID = 1
+Запись с ID=1 успешно удалена из таблицы "users".
+
+>>> Введите команду: info users
+Таблица: users
+Столбцы: ID:int, name:str, age:int, is_active:bool
+Количество записей: 0
+
+
+
+
 
 
 
 ## Демонстрация работы базы данных (asciinema)
 
-[![asciicast](https://asciinema.org/a/A4Dv6nWGh1ltv7iAuzARPHSyX.svg)](https://asciinema.org/a/A4Dv6nWGh1ltv7iAuzARPHSyX)
+[![asciicast](https://asciinema.org/a/ktYLfJRU3UI2dE9mLgZwDv7ZF)](https://asciinema.org/a/ktYLfJRU3UI2dE9mLgZwDv7ZF)
 
+
+
+## Установка и запуск (через Makefile)
+
+`Установить зависимости (dev-режим):`
+make install
+
+`Собрать wheel:`
+make build
+
+`Установить собранный пакет в систему:`
+make package-install
+
+`Проверка кода:`
+make lint
+
+`Публикация (dry-run):`
+make publish
+
+`Запустить приложение:`
+database
