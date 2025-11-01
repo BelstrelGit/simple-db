@@ -25,11 +25,6 @@ def handle_db_errors(func: Callable) -> Callable:
     return wrapper
 
 
-# @confirm_action("удаление таблицы")
-# def drop_table(metadata, table_name):
-#     ... логика удаления
-    # pass
-
 def confirm_action(action_name: str) -> Callable:
     def decorator(func: Callable) -> Callable:
         def wrapper(*args, **kwargs):

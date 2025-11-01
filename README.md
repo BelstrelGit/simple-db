@@ -115,7 +115,7 @@
 
 ## Демонстрация работы базы данных (asciinema)
 
-[![asciicast](https://asciinema.org/a/ktYLfJRU3UI2dE9mLgZwDv7ZF)](https://asciinema.org/a/ktYLfJRU3UI2dE9mLgZwDv7ZF)
+[![asciicast](https://asciinema.org/a/kVF9XeK2LpKaf3br9HrHa0Iou)](https://asciinema.org/a/kVF9XeK2LpKaf3br9HrHa0Iou)
 
 
 

@@ -1,6 +1,5 @@
 # src/primitive_db/core.py
 
-# src/primitive_db/core.py
 
 from .constants import ALLOWED_TYPES
 from .decorators import (
@@ -89,22 +88,20 @@ def insert(metadata: dict, table_name: str, values: list[str]):
     - приводит типы согласно схеме (int/str/bool)
     - генерирует новый ID и возвращает обновлённый список данных
     """
-    # 0) таблица есть?
     if table_name not in metadata:
         print(f'Ошибка: Таблица "{table_name}" не существует.')
         return None
 
-    # 1) схема столбцов (в порядке из metadata)
     raw_cols = metadata[table_name]  # пример: ["ID:int","name:str","age:int","is_active:bool"] # noqa: E501
     schema = []
     for entry in raw_cols:
         name, typ = entry.split(":", 1)
         schema.append((name.strip(), typ.strip().lower()))
 
-    # 2) отбрасываем ID — по ТЗ значения приходят БЕЗ ID
+    # отбрасываем ID — по ТЗ значения приходят БЕЗ ID
     non_id_schema = [(n, t) for (n, t) in schema if n.lower() != "id"]
 
-    # 3) проверка количества значений
+    # проверка количества значений
     if len(values) != len(non_id_schema):
         print(
             "Некорректное значение: количество полей не совпадает со схемой. "
@@ -112,10 +109,10 @@ def insert(metadata: dict, table_name: str, values: list[str]):
         )
         return None
 
-    # 4) загружаем текущие данные (для генерации ID)
+    # загружаем текущие данные (для генерации ID)
     data = load_table_data(table_name)
 
-    # 5) валидация и приведение типов по индексу
+    # валидация и приведение типов по индексу
     validated_fields = {}
     for i in range(len(values)):
         raw_value = str(values[i]).strip()
@@ -153,11 +150,11 @@ def insert(metadata: dict, table_name: str, values: list[str]):
 
         validated_fields[col_name] = coerced
 
-    # 6) новый ID
+    # новый ID
     existing_ids = [row.get("ID") for row in data if isinstance(row.get("ID"), int)]
     new_id = (max(existing_ids) + 1) if existing_ids else 1
 
-    # 7) запись строго в порядке из non_id_schema
+    # запись строго в порядке из non_id_schema
     record = {"ID": new_id}
     for col_name, _ in non_id_schema:
         record[col_name] = validated_fields[col_name]
@@ -196,7 +193,7 @@ def select(table_data, where_clause=None):
 
     def _compute():
         if where_clause is None:
-            # можно вернуть копию, чтобы не делиться ссылкой на исходный список
+            # вернуть копию, чтобы не делиться ссылкой на исходный список
             return list(table_data)
 
         filtered = []

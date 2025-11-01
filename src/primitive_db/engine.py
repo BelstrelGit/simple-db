@@ -54,8 +54,6 @@ def print_help() -> None:
     print("<command> help - справочная информация\n")
 
 
-# ---------- helpers (без try/except в run) ----------
-
 @handle_db_errors
 def _split_args(s: str) -> list[str]:
     """Разбор строки через shlex.split. Ошибки ловит декоратор."""
